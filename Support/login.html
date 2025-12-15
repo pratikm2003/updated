@@ -92,24 +92,45 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    const res = await fetch("http://localhost:8080/api/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-    });
+    try {
+        const res = await fetch(
+          "http://115.246.36.27:8080/project-0.0.1-SNAPSHOT/api/users/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username, password })
+          }
+        );
 
-    const data = await res.json();
+        if (!res.ok) {
+            alert("Server error. Try again.");
+            return;
+        }
 
-    if (data.success) {
+        const data = await res.json();
 
-        // ⭐ Save username globally
-        localStorage.setItem("loggedUser", username);
+        if (data.success === true) {
 
-       
-        window.location.href = "home.html";
-    } 
+            // user save
+            localStorage.setItem("loggedUser", data.username || username);
+
+            // redirect
+            window.location.href = "home.html";
+
+        } else {
+            alert(data.message || "Invalid username or password");
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Backend not reachable");
+    }
 });
 </script>
 
+
 </body>
 </html>
+
