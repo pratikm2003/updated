@@ -100,37 +100,32 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({
+              username: username,
+              password: password
+            })
           }
         );
 
-        if (!res.ok) {
-            alert("Server error. Try again.");
-            return;
-        }
-
         const data = await res.json();
 
-        if (data.success === true) {
-
-            // user save
-            localStorage.setItem("loggedUser", data.username || username);
-
-            // redirect
+        if (data.success) {
+            localStorage.setItem("loggedUser", data.username);
             window.location.href = "home.html";
-
         } else {
-            alert(data.message || "Invalid username or password");
+            alert(data.message);
         }
 
     } catch (err) {
         console.error(err);
-        alert("Backend not reachable");
+        alert("Backend server unreachable");
     }
 });
 </script>
 
 
+
 </body>
 </html>
+
 
