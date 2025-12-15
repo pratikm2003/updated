@@ -1,0 +1,247 @@
+/* ----------------------------------------------------
+   Global Theme
+---------------------------------------------------- */
+:root {
+  --bg: #0f1724;
+  --card: #0b1220;
+  --accent: #7c3aed;
+  --accent2: #4f46e5;
+  --muted: #9aa4b2;
+  --glass: rgba(255,255,255,0.03);
+  --border-light: rgba(255,255,255,0.04);
+  --border-medium: rgba(255,255,255,0.06);
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Inter, ui-sans-serif, system-ui;
+  background: linear-gradient(180deg, #131313 0%, #070707 60%);
+  color: #e6eef8;
+  box-sizing: border-box;
+  padding: 28px;
+}
+
+/* ----------------------------------------------------
+   Layout
+---------------------------------------------------- */
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 26px;
+}
+
+header {
+  grid-column: 1 / -1;
+  margin-bottom: 6px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+header p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ----------------------------------------------------
+   Panels / Cards
+---------------------------------------------------- */
+.panel {
+  background: var(--glass);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(4px);
+}
+
+/* ----------------------------------------------------
+   Inputs + Buttons
+---------------------------------------------------- */
+.big-input {
+  background: var(--glass);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  border: 1px dashed var(--border-light);
+}
+
+.big-input input[type=file] {
+  display: none;
+}
+
+.btn {
+  padding: 10px 14px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  border: 0;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.url-input {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.url-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--border-medium);
+  color: white;
+}
+
+.url-input button {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--border-medium);
+  color: var(--muted);
+  cursor: pointer;
+  border: 0;
+}
+
+.url-input button:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ----------------------------------------------------
+   Video Wrapper + Overlay
+---------------------------------------------------- */
+.video-wrapper {
+  margin-top: 14px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+video {
+  width: 100%;
+  max-height: 420px;
+  border-radius: 10px;
+  background: black;
+  display: block;
+}
+
+#issueOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,0,0,0.28);
+  border: 2px solid red;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 4px black;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+/* ----------------------------------------------------
+   Results Section
+---------------------------------------------------- */
+.results {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.issue-card {
+  padding: 12px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 10px;
+}
+
+.issue-card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.issue-card p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.jump-btn {
+  padding: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  border: 0;
+  color: white;
+  cursor: pointer;
+}
+
+.jump-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ----------------------------------------------------
+   Responsive
+---------------------------------------------------- */
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+.navbar {
+  background: #2c3e50;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #fff;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
